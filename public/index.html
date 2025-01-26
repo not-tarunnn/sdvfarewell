@@ -1,4 +1,3 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coming Soon!</title>
   <style>
+    /* Set the background image (photo) */
     body {
       font-family: Arial, sans-serif;
       display: flex;
@@ -13,17 +13,92 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f4f4f9;
+      
+      /* Set the background image (photo) */
+      background-image: url('background.png'); /* The background photo (BGM) */
+      background-size: cover; /* Ensure the photo covers the full container */
+      background-position: center; /* Center the background image */
+      background-attachment: fixed; /* Keep the background fixed while scrolling */
+      width: 100%;
+      position: relative; /* Enable layering for absolute positioning */
+      overflow: hidden; /* Prevent any scrolling overflow */
     }
 
+    /* Set up the GIF element */
+    .gif-container {
+      position: absolute; /* Position it above the background */
+      top: 50%; /* Position it in the center of the screen */
+      left: 50%; 
+      transform: translate(-50%, -50%); /* Adjust to ensure it's perfectly centered */
+      width: 80%; /* Set the width of the GIF */
+      max-width: 600px; /* Limit maximum width of the GIF */
+      z-index: 1; /* Ensure the GIF is above the background but below the message */
+    }
+
+    /* Message styling */
     .message {
+      position: absolute; /* Position it above the GIF and background */
       text-align: center;
       font-size: 3rem;
-      color: #333;
+      color: #fff; /* Change text color to white for better visibility on the GIF */
+      z-index: 2; /* Ensure text appears above both the GIF and background */
+      width: 80%; /* Make the text container responsive */
+      max-width: 600px; /* Limit maximum width for the text container */
+    }
+
+    .message h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .message p {
+      font-size: 1rem;
+      margin-top: 0;
+    }
+
+    /* Media queries for smaller screens */
+    @media (max-width: 768px) {
+      .message {
+        font-size: 2rem; /* Reduce the font size for smaller screens */
+      }
+
+      .message h1 {
+        font-size: 1.5rem;
+      }
+
+      .message p {
+        font-size: 0.9rem;
+      }
+
+      .gif-container {
+        width: 90%; /* Make the GIF take up more space on smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .message {
+        font-size: 1.5rem; /* Further reduce the font size for mobile devices */
+      }
+
+      .message h1 {
+        font-size: 1.2rem;
+      }
+
+      .message p {
+        font-size: 0.8rem;
+      }
+
+      .gif-container {
+        width: 100%; /* GIF will take up full width on very small screens */
+        max-width: 100%; /* Allow the GIF to stretch fully */
+      }
     }
   </style>
 </head>
 <body>
+  <div class="gif-container">
+    <img src="oia.gif" alt="Your GIF" style="width: 100%; height: auto;">
+  </div>
   <div class="message">
     <h1>Coming Soon!</h1>
     <p>We're working hard to bring you something awesome. Stay tuned!</p>
